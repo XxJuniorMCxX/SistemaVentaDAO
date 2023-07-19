@@ -16,7 +16,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class PersonaDAO implements CrudPaginadoInterface<Persona> {
     private final Conexion CON;

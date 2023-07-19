@@ -16,7 +16,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class CategoriaDAO implements CrudSimpleInterface<Categoria> {
     private final Conexion CON;
@@ -154,11 +154,11 @@ public class CategoriaDAO implements CrudSimpleInterface<Categoria> {
     public int total() {
         int totalRegistros=0;
         try {
-            ps=CON.conectar().prepareStatement("SELECT COUNT(id) FROM categoria");            
+            ps=CON.conectar().prepareStatement("SELECT COUNT(id) AS total_registros FROM categoria");            
             rs=ps.executeQuery();
             
             while(rs.next()){
-                totalRegistros=rs.getInt("COUNT(id)");
+                totalRegistros=rs.getInt("total_registros");
             }            
             ps.close();
             rs.close();
@@ -179,8 +179,10 @@ public class CategoriaDAO implements CrudSimpleInterface<Categoria> {
             ps=CON.conectar().prepareStatement("SELECT nombre FROM categoria WHERE nombre=?");
             ps.setString(1, texto);
             rs=ps.executeQuery();
-            rs.last();
-            if(rs.getRow()>0){
+            
+//            rs.last();
+//            if(rs.getRow()>0){
+            if(rs.next()){
                 resp=true;
             }           
             ps.close();

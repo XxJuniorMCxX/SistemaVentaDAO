@@ -13,7 +13,7 @@ import negocio.UsuarioControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmUsuario extends javax.swing.JInternalFrame {
     

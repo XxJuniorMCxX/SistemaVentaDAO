@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public interface CrudVentaInterface<T,D> {
    public List<T> listar(String texto,int totalPorPagina,int numPagina);

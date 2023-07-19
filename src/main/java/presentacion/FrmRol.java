@@ -10,7 +10,7 @@ import negocio.RolControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmRol extends javax.swing.JInternalFrame {
 

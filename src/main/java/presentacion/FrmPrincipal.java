@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmPrincipal extends javax.swing.JFrame {
 

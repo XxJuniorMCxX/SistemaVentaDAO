@@ -7,7 +7,7 @@ package negocio;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class Variables {
     public static int usuarioId;

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public interface CrudSimpleInterface<T> {
    public List<T> listar(String texto);
@@ -17,6 +17,8 @@ public interface CrudSimpleInterface<T> {
    public boolean actualizar(T obj);
    public boolean desactivar(int id);
    public boolean activar(int id);
+//calcular el total de registros de la tabla
    public int total();
+   //para saber si existe o no un registro en la tabla correspondiente
    public boolean existe(String texto);
 }

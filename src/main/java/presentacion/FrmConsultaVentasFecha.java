@@ -14,7 +14,7 @@ import negocio.VentaControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmConsultaVentasFecha extends javax.swing.JInternalFrame {
     

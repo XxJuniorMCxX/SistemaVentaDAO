@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class Rol {
     private int id;

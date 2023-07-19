@@ -16,7 +16,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class ArticuloDAO implements CrudPaginadoInterface<Articulo> {
     private final Conexion CON;

@@ -11,7 +11,7 @@ import negocio.PersonaControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmCliente extends javax.swing.JInternalFrame {
     

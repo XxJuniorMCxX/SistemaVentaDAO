@@ -23,7 +23,7 @@ import negocio.ArticuloControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmSeleccionarArticuloCompra extends javax.swing.JDialog {
     private FrmIngreso vista;

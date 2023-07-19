@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class IngresoDAO implements CrudIngresoInterface<Ingreso, DetalleIngreso>{
     private final Conexion CON;

@@ -23,7 +23,7 @@ import negocio.ArticuloControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmArticulo extends javax.swing.JInternalFrame {
     

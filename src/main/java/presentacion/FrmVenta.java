@@ -15,7 +15,7 @@ import negocio.VentaControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmVenta extends javax.swing.JInternalFrame {
     

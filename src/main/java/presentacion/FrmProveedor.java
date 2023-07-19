@@ -12,7 +12,7 @@ import negocio.PersonaControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmProveedor extends javax.swing.JInternalFrame {
     

@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class RolDAO {
     private final Conexion CON;
@@ -71,11 +71,11 @@ public class RolDAO {
     public int total() {
         int totalRegistros=0;
         try {
-            ps=CON.conectar().prepareStatement("SELECT COUNT(id) FROM rol");            
+            ps=CON.conectar().prepareStatement("SELECT COUNT(id) AS total_registros FROM rol");            
             rs=ps.executeQuery();
             
             while(rs.next()){
-                totalRegistros=rs.getInt("COUNT(id)");
+                totalRegistros=rs.getInt("total_registros");
             }            
             ps.close();
             rs.close();

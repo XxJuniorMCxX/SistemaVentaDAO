@@ -7,7 +7,7 @@ package entidades;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class Persona {
     private int id;

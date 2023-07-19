@@ -11,7 +11,7 @@ import negocio.CategoriaControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmCategoria extends javax.swing.JInternalFrame {
     

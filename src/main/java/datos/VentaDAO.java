@@ -24,7 +24,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class VentaDAO implements CrudVentaInterface<Venta, DetalleVenta>{
     private final Conexion CON;

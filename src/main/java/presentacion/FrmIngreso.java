@@ -14,7 +14,7 @@ import negocio.IngresoControl;
 
 /**
  *
- * @author JcarlosAd7
+ * @author XxJuniorMxX
  */
 public class FrmIngreso extends javax.swing.JInternalFrame {
     
