@@ -39,7 +39,7 @@ public class IngresoDAO implements CrudIngresoInterface<Ingreso, DetalleIngreso>
     public List<Ingreso> listar(String texto, int totalPorPagina, int numPagina) {
         List<Ingreso> registros=new ArrayList();
         try {
-            ps=CON.conectar().prepareStatement("SELECT i.id,i.usuario_id,u.nombre as usuario_nombre,i.persona_id,p.nombre as persona_nombre,i.tipo_comprobante,i.serie_comprobante,i.num_comprobante,i.fecha,i.impuesto,i.total,i.estado FROM ingreso i INNER JOIN persona p ON i.persona_id=p.id INNER JOIN usuario u ON i.usuario_id=u.id WHERE i.num_comprobante LIKE ? ORDER BY i.id ASC LIMIT ?,?");
+            ps=CON.conectar().prepareStatement("SELECT i.id,i.usuario_id,u.nombre as usuario_nombre,i.persona_id,p.nombre as persona_nombre,i.tipo_comprobante,i.serie_comprobante,i.num_comprobante,i.fecha,i.impuesto,i.total,i.estado FROM ingreso i INNER JOIN persona p ON i.persona_id=p.id INNER JOIN usuario u ON i.usuario_id=u.id WHERE i.num_comprobante LIKE ? ORDER BY i.id ASC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY");
             ps.setString(1,"%" + texto +"%");            
             ps.setInt(2, (numPagina-1)*totalPorPagina);
             ps.setInt(3, totalPorPagina);
@@ -88,7 +88,7 @@ public class IngresoDAO implements CrudIngresoInterface<Ingreso, DetalleIngreso>
         try {
             conn=CON.conectar();
             conn.setAutoCommit(false);
-            String sqlInsertIngreso="INSERT INTO ingreso (persona_id,usuario_id,fecha,tipo_comprobante,serie_comprobante,num_comprobante,impuesto,total,estado) VALUES (?,?,now(),?,?,?,?,?,?)";
+            String sqlInsertIngreso="INSERT INTO ingreso (persona_id,usuario_id,fecha,tipo_comprobante,serie_comprobante,num_comprobante,impuesto,total,estado) VALUES (?,?,GETDATE(),?,?,?,?,?,?)";
             
             ps=conn.prepareStatement(sqlInsertIngreso,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,obj.getPersonaId());
@@ -165,11 +165,11 @@ public class IngresoDAO implements CrudIngresoInterface<Ingreso, DetalleIngreso>
     public int total() {
         int totalRegistros=0;
         try {
-            ps=CON.conectar().prepareStatement("SELECT COUNT(id) FROM ingreso");            
+            ps=CON.conectar().prepareStatement("SELECT COUNT(id) As total_registros FROM ingreso");            
             rs=ps.executeQuery();
             
             while(rs.next()){
-                totalRegistros=rs.getInt("COUNT(id)");
+                totalRegistros=rs.getInt("total_registros");
             }            
             ps.close();
             rs.close();
@@ -191,8 +191,9 @@ public class IngresoDAO implements CrudIngresoInterface<Ingreso, DetalleIngreso>
             ps.setString(1, texto1);
             ps.setString(2, texto2);
             rs=ps.executeQuery();
-            rs.last();
-            if(rs.getRow()>0){
+//            rs.last();
+//            if(rs.getRow()>0){
+            if(rs.next()){
                 resp=true;
             }           
             ps.close();

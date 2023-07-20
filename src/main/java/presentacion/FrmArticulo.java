@@ -33,7 +33,7 @@ public class FrmArticulo extends javax.swing.JInternalFrame {
     
     private String rutaOrigen;
     private String rutaDestino;
-    private final String DIRECTORIO="src/files/articulos/";
+    private final String DIRECTORIO="src\\main\\java\\presentacion\\images";
     private String imagen="";
     private String imagenAnt;
     

@@ -12,6 +12,7 @@ import java.util.List;
  * @author XxJuniorMxX
  */
 public interface CrudSimpleInterface<T> {
+   //permite devolver una lista teniendo en cuenta el objeto T cuando yo realize un listado me va a permitir listar un registro
    public List<T> listar(String texto);
    public boolean insertar(T obj);
    public boolean actualizar(T obj);

@@ -32,6 +32,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
     
     private void listar(String texto){
         tablaListado.setModel(this.CONTROL.listar(texto));
+        //ordenar los registros de la tabla por columna ascendente o descendente
         TableRowSorter orden= new TableRowSorter(tablaListado.getModel());
         tablaListado.setRowSorter(orden);
         lblTotalRegistros.setText("Mostrando " + this.CONTROL.totalMostrados() + " de un total de " + this.CONTROL.total() + " registros");
@@ -340,17 +341,19 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if (tablaListado.getSelectedRowCount()==1){
-            String id= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),0));
+        if (tablaListado.getSelectedRowCount()==1){//numero de filas seleccionadas
+            String id= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),0));//fila y indice del valor de la celda(columna id)
             String nombre= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),1));
             this.nombreAnt= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),1));
             String descripcion= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),2));
             
+            //envio los valores a mis cajas de texto
             txtId.setText(id);
             txtNombre.setText(nombre);
             txtDescripcion.setText(descripcion);
             
             tabGeneral.setEnabledAt(0, false);
+            //pestaña mantenimiento la activo
             tabGeneral.setEnabledAt(1, true);
             tabGeneral.setSelectedIndex(1);
             this.accion="editar";
@@ -361,7 +364,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
-        if (tablaListado.getSelectedRowCount() == 1) {
+        if (tablaListado.getSelectedRowCount() == 1) {//has seleccionado un registro de la tabla
             String id= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),0));
             String nombre= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),1));
             

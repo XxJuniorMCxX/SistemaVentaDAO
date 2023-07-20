@@ -40,7 +40,7 @@ public class VentaDAO implements CrudVentaInterface<Venta, DetalleVenta>{
     public List<Venta> listar(String texto, int totalPorPagina, int numPagina) {
         List<Venta> registros=new ArrayList();
         try {
-            ps=CON.conectar().prepareStatement("SELECT v.id,v.usuario_id,u.nombre as usuario_nombre,v.persona_id,p.nombre as persona_nombre,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,v.fecha,v.impuesto,v.total,v.estado FROM venta v INNER JOIN persona p ON v.persona_id=p.id INNER JOIN usuario u ON v.usuario_id=u.id WHERE v.num_comprobante LIKE ? ORDER BY v.id ASC LIMIT ?,?");
+            ps=CON.conectar().prepareStatement("SELECT v.id,v.usuario_id,u.nombre as usuario_nombre,v.persona_id,p.nombre as persona_nombre,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,v.fecha,v.impuesto,v.total,v.estado FROM venta v INNER JOIN persona p ON v.persona_id=p.id INNER JOIN usuario u ON v.usuario_id=u.id WHERE v.num_comprobante LIKE ? ORDER BY v.id ASC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY");
             ps.setString(1,"%" + texto +"%");            
             ps.setInt(2, (numPagina-1)*totalPorPagina);
             ps.setInt(3, totalPorPagina);
@@ -89,7 +89,7 @@ public class VentaDAO implements CrudVentaInterface<Venta, DetalleVenta>{
         try {
             conn=CON.conectar();
             conn.setAutoCommit(false);
-            String sqlInsertVenta="INSERT INTO venta (persona_id,usuario_id,fecha,tipo_comprobante,serie_comprobante,num_comprobante,impuesto,total,estado) VALUES (?,?,now(),?,?,?,?,?,?)";
+            String sqlInsertVenta="INSERT INTO venta (persona_id,usuario_id,fecha,tipo_comprobante,serie_comprobante,num_comprobante,impuesto,total,estado) VALUES (?,?,GETDATE(),?,?,?,?,?,?)";
             
             ps=conn.prepareStatement(sqlInsertVenta,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,obj.getPersonaId());
@@ -167,11 +167,11 @@ public class VentaDAO implements CrudVentaInterface<Venta, DetalleVenta>{
     public int total() {
         int totalRegistros=0;
         try {
-            ps=CON.conectar().prepareStatement("SELECT COUNT(id) FROM venta");            
+            ps=CON.conectar().prepareStatement("SELECT COUNT(id) As total_registros FROM venta");            
             rs=ps.executeQuery();
             
             while(rs.next()){
-                totalRegistros=rs.getInt("COUNT(id)");
+                totalRegistros=rs.getInt("total_registros");
             }            
             ps.close();
             rs.close();
@@ -193,8 +193,9 @@ public class VentaDAO implements CrudVentaInterface<Venta, DetalleVenta>{
             ps.setString(1, texto1);
             ps.setString(2, texto2);
             rs=ps.executeQuery();
-            rs.last();
-            if(rs.getRow()>0){
+//            rs.last();
+//            if(rs.getRow()>0){
+            if(rs.next()){
                 resp=true;
             }           
             ps.close();
@@ -212,7 +213,7 @@ public class VentaDAO implements CrudVentaInterface<Venta, DetalleVenta>{
     public String ultimoSerie(String tipoComprobante) {
         String serieComprobante="";
         try {
-            ps=CON.conectar().prepareStatement("SELECT serie_comprobante FROM venta where tipo_comprobante=? order by serie_comprobante desc limit 1");            
+            ps=CON.conectar().prepareStatement("SELECT TOP 1 serie_comprobante FROM venta where tipo_comprobante=? order by serie_comprobante desc");            
             ps.setString(1, tipoComprobante);
             rs=ps.executeQuery();
             
@@ -234,7 +235,7 @@ public class VentaDAO implements CrudVentaInterface<Venta, DetalleVenta>{
     public String ultimoNumero(String tipoComprobante,String serieComprobante) {
         String numComprobante="";
         try {
-            ps=CON.conectar().prepareStatement("SELECT num_comprobante FROM venta WHERE tipo_comprobante=? AND serie_comprobante=? order by num_comprobante desc limit 1");            
+            ps=CON.conectar().prepareStatement("SELECT TOP 1 num_comprobante FROM venta WHERE tipo_comprobante=? AND serie_comprobante=? order by num_comprobante desc");            
             ps.setString(1, tipoComprobante);
             ps.setString(2, serieComprobante);
             rs=ps.executeQuery();

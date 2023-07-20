@@ -12,14 +12,16 @@ import java.util.List;
  * @author XxJuniorMxX
  */
 public interface CrudIngresoInterface<T,D> {
-   //permite ingresar como parameto una variable llamada texto de tipo string por que cuando yo realize el listado tambien 
+   //permite listar una lista teniendo en cuanta el objeto T
+    //permite ingresar como parameto una variable llamada texto de tipo string por que cuando yo realize el listado tambien 
     //voy a permitir listar un registro
    public List<T> listar(String texto,int totalPorPagina,int numPagina);
    //
    public List<D> listarDetalle(int id);
-   //boolen para saber si es 1 va ha permitir actualizar o si es cero no lo va ha permitir
+   //boolen para saber si el valor obtenido si es 1 va ha permitir insertar - actualizar - desactivar o si es cero no lo va ha permitir
    public boolean insertar(T obj);
    public boolean anular(int id);
    public int total();
+  
    public boolean existe(String texto1,String texto2);
 }

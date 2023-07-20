@@ -147,14 +147,15 @@ public class UsuarioControl {
             obj.setDireccion(direccion);
             obj.setTelefono(telefono);
             obj.setEmail(email);
-            
+            obj.setClave(clave);
+            /*
             String encriptado;
             if (clave.length()==64){
                 encriptado=clave;
             }else{
                 encriptado=this.encriptar(clave);
             }
-            obj.setClave(encriptado);
+            obj.setClave(encriptado);*/
             
             if(DATOS.actualizar(obj)){
                 return "OK";
@@ -173,14 +174,15 @@ public class UsuarioControl {
                 obj.setDireccion(direccion);
                 obj.setTelefono(telefono);
                 obj.setEmail(email);
-
+                obj.setClave(clave);
+/*
                 String encriptado;
                 if (clave.length() == 64) {
                     encriptado = clave;
                 } else {
                     encriptado = this.encriptar(clave);
                 }
-                obj.setClave(encriptado);
+                obj.setClave(encriptado);*/
             
                 if (DATOS.actualizar(obj)){
                     return "OK";

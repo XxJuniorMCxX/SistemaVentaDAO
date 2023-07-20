@@ -209,10 +209,10 @@ public class FrmConsultaVentasFecha extends javax.swing.JInternalFrame {
     
     private void btnReporteComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteComprobanteActionPerformed
 //        if (tablaListado.getSelectedRowCount()==1){
-//            String id= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),0));
-//            this.CONTROL.reporteComprobante(id);
-//        }else{
-//           this.mensajeError("Seleccione la venta para ver su reporte."); 
+//           String id= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),0));
+ //           this.CONTROL.reporteComprobante(id);
+ //       }else{
+ //         this.mensajeError("Seleccione la venta para ver su reporte."); 
 //        }
     }//GEN-LAST:event_btnReporteComprobanteActionPerformed
 

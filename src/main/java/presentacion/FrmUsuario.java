@@ -503,7 +503,12 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
         if (this.accion.equals("editar")){
             //Editar
             Rol seleccionado = (Rol)cboRol.getSelectedItem();
-            resp=this.CONTROL.actualizar(Integer.parseInt(txtId.getText()),seleccionado.getId(),txtNombre.getText(),(String)cboTipoDocumento.getSelectedItem(),txtNumDocumento.getText(),txtDireccion.getText(),txtTelefono.getText(),txtEmail.getText(),this.emailAnt,txtClave.getText());
+            resp=this.CONTROL.actualizar(Integer.parseInt(txtId.getText()),
+                    seleccionado.getId(),txtNombre.getText(),
+                    (String)cboTipoDocumento.getSelectedItem(),
+                    txtNumDocumento.getText(),
+                    txtDireccion.getText(),txtTelefono.getText(),
+                    txtEmail.getText(),this.emailAnt,txtClave.getText());
             if(resp.equals("OK")){
                 this.mensajeOk("Actualizado correctamente");
                 this.limpiar();

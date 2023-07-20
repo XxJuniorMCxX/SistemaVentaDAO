@@ -109,11 +109,11 @@ public class CategoriaControl {
             return "No se puede activar el registro";
         }
     }
-    
+    //nos devuelve el total de los registros de la base de datos almacenados
     public int total(){
         return DATOS.total();
     }
-    
+    //total de todos los registros que estoy mostrando en mi tabla a traves ejm: de una busqueda 
     public int totalMostrados(){
         return this.registrosMostrados;
     }
